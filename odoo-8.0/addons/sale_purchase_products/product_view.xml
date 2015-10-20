@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+     
+<!--Purchase-->
+
+     
+      <record id="product_normal_action_puchased_inherit" model="ir.actions.act_window">
+        <field name="name">Purchase Products</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('purchase_ok','=',True)]</field>
+        <field name="context">{"search_default_filter_to_purchase":1}</field>
+        <field name="search_view_id" eval="False"/> 
+        <field name="view_id" eval="False"/>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to define a new product.
+          </p><p>
+            You must define a product for everything you purchase, whether
+            it's a physical product, a consumable or services you buy to
+            subcontractants.
+          </p><p>
+            The product form contains detailed information to improve the
+            purchase process: prices, procurement logistics, accounting data,
+            available suppliers, etc.
+          </p>
+        </field>
+    </record>
+    
+    
+	 <menuitem name="Purchasable Products" id="purchase.menu_procurement_partner_contact_form" action="product_normal_action_puchased_inherit"
+          parent="purchase.menu_procurement_management_product"/>
+    
+<!--  Sales    -->
+
+		
+		
+		<record id="product_template_action_for_sales" model="ir.actions.act_window">
+            <field name="name">Saleable Products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.template</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('sale_ok','=',True)]</field>
+            <field name="view_id" ref="product.product_template_kanban_view"/>
+            <field name="context">{"search_default_filter_to_sell":1}</field>
+        </record>
+        
+            
+        <menuitem action="product_template_action_for_sales" id="product.menu_product_template_action" parent="base.menu_product" />	 
+		 
+    <!-- Product Variants -->        
+        
+       <record id="product_normal_action_sell_template" model="ir.actions.act_window">
+            <field name="name">Product Variants</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('sale_ok','=',True)]</field>
+            <field name="context">{"search_default_filter_to_sell":1}</field>
+            <field name="view_id" ref="product.product_product_tree_view"/>
+            <field name="search_view_id" ref="product.product_search_form_view"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a new product.
+              </p><p>
+                You must define a product for everything you sell, whether it's
+                a physical product, a consumable or a service you offer to
+                customers.
+              </p><p>
+                The product form contains information to simplify the sale
+                process: price, notes in the quotation, accounting data,
+                procurement methods, etc.
+              </p>
+            </field>
+        </record>
+        
+        <menuitem id="product.menu_products" action="product_normal_action_sell_template" parent="base.menu_product" groups="base.group_no_one" sequence="10"/>
+	    
+    </data>
+ </openerp>
+    

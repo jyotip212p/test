@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate="0">
+		
+		<record id="sequence_type_in_asset_requisition" model="ir.sequence.type">
+			<field name="name">Asset Requisition</field>
+			<field name="code">asset.requisition.in</field>
+		</record>
+		
+		<record id="sequence_in_asset_requisition" model="ir.sequence">
+			<field name="name">Asset Requisition</field>
+			<field name="code">asset.requisition.in</field>
+			<field name="prefix">AIN/%(year)s/%(month)s/</field>
+			<field name="padding">5</field>
+			<field name="company_id" eval="False"/>
+		</record>
+		
+		<record id="sequence_type_out_asset_requisition" model="ir.sequence.type">
+			<field name="name">Asset Requisition</field>
+			<field name="code">asset.requisition.out</field>
+		</record>
+		
+		<record id="sequence_out_asset_requisition" model="ir.sequence">
+			<field name="name">Asset Requisition</field>
+			<field name="code">asset.requisition.out</field>
+			<field name="prefix">AOUT/%(year)s/%(month)s/</field>
+			<field name="padding">5</field>
+			<field name="company_id" eval="False"/>
+		</record>
+		
+	</data>
+</openerp>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+     <data>
+
+ 	<record id='wizard_sales_forecast_send_for_validate_id' model="ir.ui.view">
+            <field name="name">sales.forecast.send.for.validate.wizard</field>
+            <field name="model">sales.forecast.send.for.validate</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Sales Forecast Send for Validate Details" >                        
+                        <group colspan="4">
+                            <field name="name" required="1"/>   
+                        </group>
+			<group colspan="1">
+			</group>
+                        <group colspan="2">
+                            <button special="cancel" icon="gtk-cancel" string="Cancel" colspan="1"/>
+                            <button name="send_to_validate" string="Submit" icon="gtk-ok" type="object" context="{'comment':name}" class="oe_button oe_form_button_save oe_highlight" colspan="1"/>
+                        </group>
+			<group colspan="1">
+			</group>                        
+                </form>
+            </field>
+        </record>        
+
+        <record id="action_sales_forecast_send_for_validate" model="ir.actions.act_window">
+             <field name="name">Send for Validate</field>
+             <field name="res_model">sales.forecast.send.for.validate</field>
+             <field name="type">ir.actions.act_window</field>
+             <field name="view_type">form</field>
+             <field name="view_mode">form</field>
+             <field name="target">new</field>
+        </record>
+        <!--menuitem parent="account.menu_finance_reporting" id="success_msg_menu" icon="STOCK_PRINT" name="Success Msg" action="action_success_msg" sequence="9998"/-->
+
+    </data>
+</openerp>

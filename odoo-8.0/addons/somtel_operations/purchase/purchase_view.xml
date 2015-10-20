@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		
+		<record id="purchase_order_view_asset_inh" model="ir.ui.view">
+			<field name="name">purchase.order.view.asset.inh</field>
+			<field name="model">purchase.order</field>
+			<field name="inherit_id" ref="purchase.purchase_order_form"/>
+			<field name="arch" type="xml">
+				<field name="order_line" position="replace">
+					<field name="order_line">
+						<tree string="Purchase Order Lines">
+                            <field name="product_id" on_change="onchange_product_id(parent.pricelist_id,product_id,0,False,parent.partner_id, parent.date_order,parent.fiscal_position,date_planned,name,False,parent.state,context)"/>
+                            <field name="name"/>
+                            <field name="date_planned"/>
+                            <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                            <field name="account_analytic_id" groups="purchase.group_analytic_accounting" domain="[('type','not in',('view','template'))]"/>
+                            <field name="product_qty" on_change="onchange_product_id(parent.pricelist_id,product_id,product_qty,product_uom,parent.partner_id,parent.date_order,parent.fiscal_position,date_planned,name,price_unit,parent.state,context)"/>
+                            <field name="product_uom" groups="product.group_uom" on_change="onchange_product_uom(parent.pricelist_id,product_id,product_qty,product_uom,parent.partner_id, parent.date_order,parent.fiscal_position,date_planned,name,price_unit,parent.state,context)"/>
+                            <field name="price_unit"/>
+                            <field name="taxes_id" widget="many2many_tags" domain="[('parent_id','=',False),('type_tax_use','!=','sale')]"/>
+                            <field name="price_subtotal"/>
+                            <field name="state" invisible="1"/>
+                        </tree>
+					</field>
+				</field>
+			</field>
+		</record>
+		
+		<record id="purchase_order_line_form_view_asset_inh" model="ir.ui.view">
+			<field name="name">purchase.order.line.form.view.asset.inh</field>
+			<field name="model">purchase.order.line</field>
+			<field name="inherit_id" ref="purchase.purchase_order_line_form"/>
+			<field name="arch" type="xml">
+				<field name="account_analytic_id" position="after">
+					<field name="prod_type" required="1"/>
+				</field>
+			</field>
+		</record>
+		
+		<record id="action_expense_invoice_tree2" model="ir.actions.act_window">
+            <field name="name">Payment Requests</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field eval="False" name="view_id"/>
+            <field name="domain">[('type','=','in_invoice'),('sector_expense','=',True)]</field>
+            <field name="context">{'sector_expense': True,'default_sector_expense': True,'default_type': 'in_invoice', 'type': 'in_invoice', 'journal_type': 'purchase'}</field>
+            <field name="search_view_id" ref="account.view_account_invoice_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to record a new supplier invoice.
+              </p><p>
+                You can control the invoice from your supplier according to
+                what you purchased or received. Odoo can also generate
+                draft invoices automatically from purchase orders or receipts.
+              </p>
+            </field>
+        </record>
+        
+        <menuitem name="Expenses" id="menu_action_expense_tree2" parent="base.menu_purchase_root" groups="purchase.group_purchase_user" sequence="1"/>
+        <menuitem action="action_expense_invoice_tree2" id="menu_action_expense_invoice_tree2" parent="menu_action_expense_tree2" groups="purchase.group_purchase_user"/>
+        	
+        <menuitem action="purchase.purchase_rfq" id="purchase.menu_purchase_rfq"
+            parent="purchase.menu_procurement_management"
+            sequence="1"/>
+		
+		
+		<!--Inventory control-->
+      <menuitem id="purchase.menu_procurement_management_inventory" name="Incoming Product"
+            parent="base.menu_purchase_root" sequence="4" groups="purchase.group_purchase_user"/>
+      <menuitem action="stock.action_receipt_picking_move" id="purchase.menu_action_picking_tree_in_move"
+            parent="purchase.menu_procurement_management_inventory" sequence="11"/>
+            
+            
+	<!--Invoice control-->
+    <menuitem id="purchase.menu_procurement_management_invoice" name="Invoice Control"
+        parent="base.menu_purchase_root" sequence="6" groups="purchase.group_purchase_manager"/>
+	</data>
+</openerp>

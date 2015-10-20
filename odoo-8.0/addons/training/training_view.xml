@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+	
+	<menuitem name="Training" parent="hr.menu_hr_root"  id="emp_training" sequence="2"  groups="base.group_user"/>
+	
+	
+	   <record model="ir.ui.view" id="view_emp_training_tree">
+            <field name="name">emp_training_tree</field>
+            <field name="model">training</field>
+            <field name="arch" type="xml">
+                <tree string="Training Request" fonts="bold:message_unread==True" colors="grey:state=='cancel';blue:state=='waiting_approval'">
+                	<field name="name" string="Reference"/>
+                    <field name="employee_id"  />
+                    <field name="date"/>
+                    <field name="skill_id" />
+                    <field name="department_id"/>
+                    <field name="state"/>
+                    <field name="message_unread" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        
+       
+    	
+    	  <record id="view_emp_training_form" model="ir.ui.view">
+           <field name="name">emp_form_training</field>
+           <field name="model">training</field>
+           <field name="arch" type="xml">
+             <form string="Training Request" version="7.0">
+                 <header>  
+                 <button name="button_submit" string="Submit" type="object" states="draft" class="oe_highlight" groups="base.group_user"/>
+                 <button name="button_confirm" string="Confirm" type="object" states="draft" class="oe_highlight" groups="base.group_user"></button>
+                 <field name="state" style="font-size: 10px;" widget="statusbar" statusbar_visible="draft,waiting_approval,approved,training_in_progress,training_done,done" />
+                 </header>
+                 <sheet>
+                  <group col="4">
+                 	<h2><field name ="name"  readonly="1"/></h2>
+                 </group>
+                 <group col="4">
+					<field name="employee_id" colspan="2"   attrs="{'required':[('state','not in','draft')]}" />
+					<field name="date" colspan="2"  attrs="{'required':[('state','not in','draft')]}" />
+					<field name ="department_id" colspan="2" attrs="{'required':[('state','not in','draft')]}"/>
+					<field name="skill_id" colspan="2" attrs="{'required':[('state','not in','draft')]}"/>
+                 </group>
+                 <notebook>
+                 <page string="Reason" >
+                 	<field name="reason" attrs="{'required':[('state','not in','draft')]}"/>
+                 </page>
+                 
+                 </notebook>
+                 
+                 
+                 </sheet>
+			 </form>
+		 </field>
+	     </record>
+	     
+	    <record id="actn_training" model="ir.actions.act_window">
+            <field name="name">Employee Training</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">training</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+        </record>
+        
+	   
+	   
+	<menuitem parent="emp_training" id="menu_emp_training" action="actn_training" sequence="1"/>
+	
+</data>
+</openerp>

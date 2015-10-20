@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		
+		<menuitem name="Material Indentation" parent="mail.mail_feeds_main" id="menu_indentation" sequence="11" groups="base.group_user"/>
+		
+<!--	Shop User	-->
+
+		<record id="view_material_indentation_search_shop" model="ir.ui.view">
+			<field name="name">view.material.indentation.search</field>
+			<field name="model">material.indentation</field>
+			<field name="arch" type="xml">
+				<search string="Material Indentation">
+					<field name="date"/>
+					<field name="shop_id"/>
+					<field name="sector_id"/>
+					<group expand="0" string="Group By">
+                        <filter string="Status" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Sector" icon="terp-go-month" domain="[]" context="{'group_by':'sector_id'}"/>
+                        <filter string="Shop" icon="terp-go-month" domain="[]" context="{'group_by':'shop_id'}"/>
+                    </group>
+				</search>
+			</field>
+		</record>
+
+		<record id="view_material_indentation_shop_tree" model="ir.ui.view">
+			<field name="name">view.material.indentation.shop.tree</field>
+			<field name="model">material.indentation</field>
+			<field name="arch" type="xml">
+				<tree string="Material Indentation" colors="grey:state=='cancel';blue:state in ('waiting','transmitted')">
+					<field name="name"/>
+					<field name="date"/>
+					<field name="expected_date"/>
+					<field name="shop_id"/>
+					<field name="sector_id"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="view_material_indentation_shop_form" model="ir.ui.view">
+			<field name="name">view.material.indentation.shop.form</field>
+			<field name="model">material.indentation</field>
+			<field name="arch" type="xml">
+				<form string="Material Indentation">
+					<header>
+						<button name="action_submit" string="Submit Request" type="object" states="draft" groups="somtel_operations.group_retail_sale_outlet"/>
+						<button name="action_cancel" string="Reject" type="object" states="waiting" groups="somtel_operations.group_retail_sale_sector"/>
+						<button name="action_confirm_transfer" attrs="{'invisible':['|',('sector_shop','=',True),('state','!=','waiting')]}" string="Confirm &amp; Transfer" type="object" groups="somtel_operations.group_retail_sale_sector"/>
+						<button name="action_process_further" string="Ask Main Warehouse" states="waiting" type="object" groups="somtel_operations.group_retail_sale_sector"/>
+						<button name="action_confirm_transfer_second" string="Confirm Transfer" type="object" states="transmitted" groups="stock.group_stock_user"/>
+						<button name="view_transfer" string="View Transfer" type="object" states="transmitted" groups="stock.group_stock_manager"/>
+						<field name="state" widget="statusbar" statusbar_visible="draft,waiting,confirmed,transmitted,done,cancel" readonly="1"/>
+					</header>
+					<sheet>
+		             	<group col="4">
+		                 <h2><field name="name" readonly='1'/></h2>
+		        		 </group>					
+						<group col="8">
+							<group >
+								<field name="date" required="1"/>
+								<field name="expected_date" required="1"/>
+							</group>						
+							<group>
+								<field name="employee_id" required="1" on_change="onchange_employee(employee_id)" options="{'no_create':True}"/>
+								<field name="shop_id" required="1" on_change="onchange_shop(shop_id)" options="{'no_create':True}"/>
+								<field name="sector_id" required="1" options="{'no_create':True}"/>
+								<field name="main_warehouse_id" options="{'no_create':True}" invisible="1" readonly="1"/>
+								<field name="warehouse_id" options="{'no_create':True}" readonly="1"/>
+								<field name="sector_shop" invisible="1"/>
+							</group>
+						</group>
+						<notebook>
+							<page string="Materials">
+								<field name="material_lines" nolable="1">
+									<tree string="Materials" editable="top">
+										<field name="product_id" domain="[('product_type','=','inventory')]" required="1" on_change="onchange_product(product_id,parent.warehouse_id)" options="{'no_create':True}"/>
+										<field name='name' invisible='1'/>
+										<field name="quantity" required="1"/>
+										<field name="uom_id" required="1" options="{'no_create':True}"/>
+										<field name="dest_location_id" required="1" options="{'no_create':True}"/>
+									</tree>
+								</field>
+							</page>
+							<page string="Pickings" attrs="{'invisible':[('state','in',('draft','waiting'))]}">
+								<field name="picking_ids" readonly="1">
+									<tree colors="blue:state == 'draft';grey:state == 'cancel';red:state not in ('cancel', 'done') and date &lt; current_date" string="Picking list">
+									      <field name="name"/>
+									      <field name="location_id"/>
+									      <field name="location_dest_id"/>
+									      <field name="date"/>
+									      <field name="min_date" invisible="1"/>
+									      <field name="origin"/>
+									      <field name="group_id" invisible="1"/>
+									      <field name="backorder_id" invisible="1"/>
+									      <field name="state"/>
+									      <field name="priority" invisible="1"/>
+									      <field name="picking_type_id" invisible="1"/>
+									</tree>
+								</field>
+							</page>
+						</notebook>
+					</sheet>
+					 <div class="oe_chatter">
+                    	<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    	<field name="message_ids" widget="mail_thread" groups="base.group_user"/>
+                	</div>
+				</form>
+			</field>
+		</record>
+
+		<record id='action_material_indentation_shop' model='ir.actions.act_window'>
+			<field name='name'>Materials for Shop</field>
+			<field name='res_model'>material.indentation</field>
+			<field name='view_type'>form</field>
+			<field name='view_mode'>tree,form</field>
+            <field name="search_view_id" ref="view_material_indentation_search_shop"/>
+            <field name="domain">[('shop_id','!=',False)]</field>
+            
+		</record>
+
+	    <record model="ir.actions.act_window.view" id="action_material_indentation_shop_tree">
+	           <field name="sequence" eval="3"/>
+	          <field name="view_mode">tree</field>
+	          <field name="view_id" ref="view_material_indentation_shop_tree"/>
+	          <field name="act_window_id" ref="action_material_indentation_shop"/>
+	     </record>
+	      
+	      <record model="ir.actions.act_window.view" id="action_material_indentation_shop_form">
+	           <field name="sequence" eval="4"/>
+	          <field name="view_mode">form</field>
+	          <field name="view_id" ref="view_material_indentation_shop_form"/>
+	          <field name="act_window_id" ref="action_material_indentation_shop"/>
+	      </record>
+    	
+		<menuitem id='menu_material_indentation_shop' action='action_material_indentation_shop' parent='menu_indentation' groups="group_retail_sale_outlet,stock.group_stock_user" sequence='2'/>
+
+	</data>
+</openerp>

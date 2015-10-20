@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+        <record id="view_outlet_sales_forecast_filter" model="ir.ui.view">
+            <field name="name">outlet.sales.forecast.select</field>
+            <field name="model">outlet.sales.forecast</field>
+            <field name="arch" type="xml">
+                <search string="Search Forecast Details">
+                    <field name="shop_id" string="Shop" filter_domain="[('shop_id','ilike',self)]"/>
+                    <field name="name" string="Forecast Number" filter_domain="[('name','ilike',self)]"/>
+                    <field string="Product category" name="forecast_lines" filter_domain="[('forecast_lines.category_id','ilike',self)]"/>
+                    <field string="Product" name="forecast_lines" filter_domain="[('forecast_lines.name','ilike',self)]"/>
+                    <field name="from_date" string="From Date"/>
+                    <field name="to_date" string="To Date"/>
+                    <field name="state" string="State" filter_domain="[('state','ilike',self)]"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Shop" icon="terp-go-stock" name="shop_id" domain="[]" context="{'group_by':'shop_id'}"/>
+                        <filter string="State" icon="terp-go-stock" name="state" domain="[]" context="{'group_by':'state'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+        <record id="view_outlet_sales_forecast_tree" model="ir.ui.view">
+            <field name="name">outlet.sales.forecast.tree</field>
+            <field name="model">outlet.sales.forecast</field>
+            <field name="arch" type="xml">
+                <tree string="Sale Forecast Details" version="7.0">                    
+                    <field name="name"/>
+                    <field name="shop_id"/>
+                    <field name="from_date"/>
+                    <field name="to_date"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_outlet_sales_forecast_form" model="ir.ui.view">
+            <field name="name">outlet.sales.forecast.form</field>
+            <field name="model">outlet.sales.forecast</field>
+            <field name="arch" type="xml">
+                <form string="sales Forecast Details" version="7.0">
+                <header>
+                        <button name="submit_forecast" states="new" string="Submit" groups="somtel_operations.group_retail_sale_outlet" type="object" class="oe_button oe_form_button_save oe_highlight"/>
+                        <button name="validate_forecast" states="wait_validate" string="Validate" groups="somtel_operations.group_retail_sale_sector" type="object" class="oe_button oe_form_button_save oe_highlight"/>
+                        <button name="approve_forecast" states="wait_approve" string="Approve" groups="base.group_sale_manager" type="object" class="oe_button oe_form_button_save oe_highlight"/>
+                        <button name="reject_forecast" states="wait_validate" string="Reject" groups="somtel_operations.group_retail_sale_sector" type="object" class="oe_button oe_form_button_save"/>
+                        <button name="send_for_validate" states="wait_approve" string="Send Back" groups="base.group_sale_manager" type="object" class="oe_button oe_form_button_save oe_highlight"/>
+                        <button name="reset_to_draft_forecast" states="reject" string="Reset to Draft" groups="somtel_operations.group_retail_sale_outlet,somtel_operations.group_retail_sale_sector" type="object" class="oe_button oe_form_button_save oe_highlight"/>
+                        <button name="cancel_forecast" states="reject" string="Cancel" groups="somtel_operations.group_retail_sale_outlet,somtel_operations.group_retail_sale_sector" type="object" class="oe_button oe_form_button_save oe_highlight"/>
+                        <button name="reject_forecast" states="wait_approve" string="Reject" groups="base.group_sale_manager" type="object" class="oe_button oe_form_button_save"/>
+                        <field name="state" widget="statusbar" statusbar_visible="new,wait_validate,wait_approve,done" statusbar_colors='{"done":"green"}'/>
+                    </header>
+	                <sheet>
+	                <h1>
+                          <label string="Forecast "/>
+                          <field name="name" class="oe_inline" readonly="1"/>
+                        </h1>
+                	<group>
+                	<group col='4'>
+	                    <field name="shop_id" colspan="2" required="1" attrs="{'readonly':[('state','not in',('new','wait_approve'))]}" options="{'no_create':True}"/>
+	                   <label string="" colspan="2"/>
+	                    <field name="from_date" colspan="2" required="1"  attrs="{'readonly':[('state','not in',('new','wait_approve'))]}" on_change="onchange_from_date(from_date,to_date)"/>
+	                    <field name="to_date" colspan="2" required="1"  attrs="{'readonly':[('state','not in',('new','wait_approve'))]}" on_change="onchange_to_date(from_date,to_date)"/>
+	                    <field name="total_quantity" invisible="1"/>
+	                    <field name="total_amount" invisible="1"/>
+	                    <field name="actual_sales_quantity" invisible="1"/>
+	                    <field name="actual_sales_amount" invisible="1"/>
+	                </group>
+	                </group>
+	                <group col='4'>
+	                <field name="forecast_lines"  attrs="{'readonly':[('state','not in',('new','wait_approve'))]}" nolabel="1">
+                                <form string="Sales Forecast Lines" version="7.0">
+                                    <group>
+                                        <group>
+                                            <field name="category_id"/>
+                                            <field name="name" required="1"/>
+                                            <field name="quantity"/>
+                                            <field name="unit_price"/>
+                                            <field name="total_price"/>                                            
+                                            <field name="forecast_id" invisible="1"/>
+                                        </group>
+                                    </group>
+                                </form>
+                                <tree string="Sales Forecast Lines"  create="true" editable="bottom" delete="true">
+                                    <field name="category_id" options="{'no_create':True}"/>
+                                    <field name="name" domain="[(category_id and ('categ_id','=',category_id) or ('name','!=',False))]"  options="{'no_create':True}" on_change="onchange_product(name,quantity)" required="1"/>
+                                    <field name="quantity" sum="Total Quantity" on_change="onchange_quantity(quantity,unit_price)"/>
+                                    <field name="unit_price" readonly="1"/>
+                                    <field name="total_price" readonly="1" sum="Total Amount"/>
+                                </tree>
+                            </field>
+	                </group>
+	                <group>
+                	<group col='4'>
+	                    <field name="reject_reason" readonly="1" attrs="{'invisible':[('reject_reason','=',False)]}"/>
+	                    <field name="comment" readonly="1" attrs="{'invisible':[('comment','=',False)]}"/>
+	                </group>
+	                </group>
+	              </sheet>
+	              <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+        
+        <record id="outlet_sales_forecast_kanban_view" model="ir.ui.view">
+        	<field name="name">Outlet Sales Forecast</field>
+        	<field name="model">outlet.sales.forecast</field>
+        	<field name="arch" type="xml">
+        		<kanban class="oe_background_grey">
+        			<field name="name"/>
+        			<field name="shop_id"/>
+        			<field name="from_date"/>
+        			<field name="to_date"/>
+        			<field name="total_quantity"/>
+        			<field name="total_amount"/>
+                    <field name="actual_sales_quantity"/>
+                    <field name="actual_sales_amount"/>        			
+        			<field name="color"/>
+        			<templates>
+        				<t t-name="kanban-box">
+        					<div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click oe_kanban_outlet_sales_forecast">
+        						<div class="oe_dropdown_toggle oe_dropdown_kanban">
+        							<span class="oe_e">í</span>
+        							<ul class="oe_dropdown_menu">
+        								<t t-if="widget.view.is_action_enabled('edit')"><li><a type="edit">Edit...</a></li></t>
+        								<li t-if="widget.view.is_action_enabled('delete')"><a type="delete">Delete</a></li>
+        								<li t-if="widget.view.is_action_enabled('edit')"><ul class="oe_kanban_colorpicker" data-field="color"/></li>
+        							</ul>
+        						</div>
+	        					<div class="oe_kanban_content">
+	        						<h4 class="text-center"><strong><field name="name"/></strong></h4>
+	        						<div class="oe_clear"></div>
+				                    <div class="oe_center">
+				                        <field name="actual_sales_quantity" widget="gauge" style="width:160px; height: 120px; cursor: pointer;"
+				                            options="{'max_field': 'total_quantity'}">Quantity</field>
+				                        <field name="actual_sales_amount" widget="gauge" style="width:160px; height: 120px; cursor: pointer;"
+				                            options="{'max_field': 'total_amount'}">Amount</field>
+				                    </div>        						
+	        					</div>
+        					</div>
+        				</t>
+        			</templates>
+        		</kanban>
+        	</field>
+        </record>
+        
+        <record id="action_outlet_sales_forecast" model="ir.actions.act_window">
+            <field name="name">Outlet Sales Forecast</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">outlet.sales.forecast</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_id" ref="view_outlet_sales_forecast_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Create and Manage the Outlet sales Forecasts.
+              </p><p>
+                You can create and Approve the Outlets/Shops Sales Forecasts.
+              </p>
+            </field>
+        </record>
+        
+         <menuitem id="menu_outlet_sales_forecast" action="action_outlet_sales_forecast" name="Outlet Sales Forecast" parent="base.menu_sales" sequence="10" groups="somtel_operations.group_retail_sale_outlet,somtel_operations.group_retail_sale_sector,base.group_sale_manager"/>  
+               
+	</data>
+</openerp>	  

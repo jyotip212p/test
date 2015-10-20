@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+     <data>
+
+ 	<record id='wizard_sales_forecast_reject_reason_id' model="ir.ui.view">
+            <field name="name">sales.forecast.reject.reason.wizard</field>
+            <field name="model">sales.forecast.reject.reason</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Sales Forecast Reject Reason Details" >                        
+                        <group colspan="4">
+                            <field name="name" required="1"/>   
+                        </group>
+			<group colspan="1">
+			</group>
+                        <group colspan="2">
+                            <button special="cancel" icon="gtk-cancel" string="Cancel" colspan="1"/>
+                            <button name="call_reject_forecast" string="Submit" icon="gtk-ok" type="object" context="{'reason':name}" class="oe_button oe_form_button_save oe_highlight" colspan="1"/>
+                        </group>
+			<group colspan="1">
+			</group>                        
+                </form>
+            </field>
+        </record>        
+
+        <record id="action_sales_forecast_reject_reason" model="ir.actions.act_window">
+             <field name="name">Reject Forecast</field>
+             <field name="res_model">sales.forecast.reject.reason</field>
+             <field name="type">ir.actions.act_window</field>
+             <field name="view_type">form</field>
+             <field name="view_mode">form</field>
+             <field name="target">new</field>
+        </record>
+        <!--menuitem parent="account.menu_finance_reporting" id="success_msg_menu" icon="STOCK_PRINT" name="Success Msg" action="action_success_msg" sequence="9998"/-->
+
+    </data>
+</openerp>

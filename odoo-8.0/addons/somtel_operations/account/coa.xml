@@ -1,0 +1,1519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="1">            
+	   		<record model="account.account.template" id="sm0">
+		    <field name="name">Somtel Intenational</field>
+		    <field name="code">0</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_view"/>
+		    <field name="reconcile" eval="False"/>
+            </record>
+            <record model="account.account.template" id="sm1">
+		    <field name="name">Balance Sheet</field>
+		    <field name="code">1</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_view"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm0"/>
+            </record>
+            <record model="account.account.template" id="sm2">
+		    <field name="name">Profit and Loss</field>
+		    <field name="code">2</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_view"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm0"/>
+            </record>
+            <record model="account.account.template" id="sm10000">
+		    <field name="name">Current assets</field>
+		    <field name="code">10000</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.account_type_asset_view1"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm1"/>
+            </record>
+            <record model="account.account.template" id="sm10001">
+		    <field name="name">Cash &amp; Cash Equivelents</field>
+		    <field name="code">10001</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_cash"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm10000"/>
+            </record>
+            <record model="account.account.template" id="sm10002">
+		    <field name="name">Cash in hand - Regional Main Centers</field>
+		    <field name="code">10002</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_cash"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm10001"/>
+            </record>
+            <record model="account.account.template" id="sm10003">
+		    <field name="name">Cash in hand</field>
+		    <field name="code">10003</field>
+		    <field name="type">liquidity</field>
+		    <field name="user_type" ref="account.data_account_type_cash"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm10002"/>
+            </record>
+            <record model="account.account.template" id="sm10004">
+		    <field name="name">Cash in hand</field>
+		    <field name="code">10004</field>
+		    <field name="type">liquidity</field>
+		    <field name="user_type" ref="account.data_account_type_cash"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm10002"/>
+            </record>
+            <record model="account.account.template" id="sm10005">
+		    <field name="name">Cash in hand</field>
+		    <field name="code">10005</field>
+		    <field name="type">liquidity</field>
+		    <field name="user_type" ref="account.data_account_type_cash"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm10002"/>
+            </record>
+            <record model="account.account.template" id="sm10200">
+		    <field name="name">Cash in hand outlets</field>
+		    <field name="code">10200</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_cash"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm10001"/>
+            </record>
+            <record model="account.account.template" id="sm10201">
+		    <field name="name">Cash in hand</field>
+		    <field name="code">10201</field>
+		    <field name="type">liquidity</field>
+		    <field name="user_type" ref="account.data_account_type_cash"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm10200"/>
+            </record>
+            <record model="account.account.template" id="sm10202">
+		    <field name="name">Cash in hand</field>
+		    <field name="code">10202</field>
+		    <field name="type">liquidity</field>
+		    <field name="user_type" ref="account.data_account_type_cash"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm10200"/>
+            </record>
+            <record model="account.account.template" id="sm10203">
+		    <field name="name">Cash in hand</field>
+		    <field name="code">10203</field>
+		    <field name="type">liquidity</field>
+		    <field name="user_type" ref="account.data_account_type_cash"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm10200"/>
+            </record>
+            <record model="account.account.template" id="sm10300">
+		    <field name="name">Cash at all Banks</field>
+		    <field name="code">10300</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_cash"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm10001"/>
+            </record>
+            <record model="account.account.template" id="sm10301">
+		    <field name="name">Cash at Bank</field>
+		    <field name="code">10301</field>
+		    <field name="type">liquidity</field>
+		    <field name="user_type" ref="account.data_account_type_cash"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm10300"/>
+            </record>
+            <record model="account.account.template" id="sm10302">
+		    <field name="name">Cash at Bank</field>
+		    <field name="code">10302</field>
+		    <field name="type">liquidity</field>
+		    <field name="user_type" ref="account.data_account_type_cash"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm10300"/>
+            </record>
+            <record model="account.account.template" id="sm10303">
+		    <field name="name">Cash at Bank</field>
+		    <field name="code">10303</field>
+		    <field name="type">liquidity</field>
+		    <field name="user_type" ref="account.data_account_type_cash"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm10300"/>
+            </record>
+            <record model="account.account.template" id="sm14200">
+		    <field name="name">RECEIVABLES </field>
+		    <field name="code">14200</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_receivable"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm10000"/>
+            </record>
+            <record model="account.account.template" id="sm14201">
+		    <field name="name">Receivables Control Acct</field>
+		    <field name="code">14201</field>
+		    <field name="type">receivable</field>
+		    <field name="user_type" ref="account.data_account_type_receivable"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14200"/>
+            </record>
+            <record model="account.account.template" id="sm14202">
+		    <field name="name">Receibales - Subscribers</field>
+		    <field name="code">14202</field>
+		    <field name="type">receivable</field>
+		    <field name="user_type" ref="account.data_account_type_receivable"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14200"/>
+            </record>
+            <record model="account.account.template" id="sm14203">
+		    <field name="name">Receivables - Agencies </field>
+		    <field name="code">14203</field>
+		    <field name="type">receivable</field>
+		    <field name="user_type" ref="account.data_account_type_receivable"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14200"/>
+            </record>
+            <record model="account.account.template" id="sm14204">
+		    <field name="name">Receivables - Scartch Card Sales - Agents</field>
+		    <field name="code">14204</field>
+		    <field name="type">receivable</field>
+		    <field name="user_type" ref="account.data_account_type_receivable"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14200"/>
+            </record>
+            <record model="account.account.template" id="sm14205">
+		    <field name="name">Receivables - Scartch Card Sales - Regions</field>
+		    <field name="code">14205</field>
+		    <field name="type">receivable</field>
+		    <field name="user_type" ref="account.data_account_type_receivable"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14200"/>
+            </record>
+            <record model="account.account.template" id="sm14206">
+		    <field name="name">Receivables - Sim Card Sales - Agents</field>
+		    <field name="code">14206</field>
+		    <field name="type">receivable</field>
+		    <field name="user_type" ref="account.data_account_type_receivable"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14200"/>
+            </record>
+            <record model="account.account.template" id="sm14207">
+		    <field name="name">Receivable - Easy Load Sales - Regions</field>
+		    <field name="code">14207</field>
+		    <field name="type">receivable</field>
+		    <field name="user_type" ref="account.data_account_type_receivable"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14200"/>
+            </record>
+            <record model="account.account.template" id="sm14208">
+		    <field name="name">Receivables - Easy Load Sales - Agents</field>
+		    <field name="code">14208</field>
+		    <field name="type">receivable</field>
+		    <field name="user_type" ref="account.data_account_type_receivable"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14200"/>
+            </record>
+            <record model="account.account.template" id="sm14209">
+		    <field name="name">Receivables - International Traffic- TGS </field>
+		    <field name="code">14209</field>
+		    <field name="type">receivable</field>
+		    <field name="user_type" ref="account.data_account_type_receivable"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14200"/>
+            </record>
+            <record model="account.account.template" id="sm14210">
+		    <field name="name">Receivables - Local Intercompany  </field>
+		    <field name="code">14210</field>
+		    <field name="type">receivable</field>
+		    <field name="user_type" ref="account.data_account_type_receivable"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14200"/>
+            </record>
+            <record model="account.account.template" id="sm14211">
+		    <field name="name">Receivables - Deposits Interconections </field>
+		    <field name="code">14211</field>
+		    <field name="type">receivable</field>
+		    <field name="user_type" ref="account.data_account_type_receivable"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14200"/>
+            </record>
+            <record model="account.account.template" id="sm14212">
+		    <field name="name">Receivables - Deposits Others</field>
+		    <field name="code">14212</field>
+		    <field name="type">receivable</field>
+		    <field name="user_type" ref="account.data_account_type_receivable"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14200"/>
+            </record>
+            <record model="account.account.template" id="sm14300">
+		    <field name="name">Inventory Accounts</field>
+		    <field name="code">14300</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm10000"/>
+            </record>
+            <record model="account.account.template" id="sm14301">
+		    <field name="name">Scartch Card Sales - Agents</field>
+		    <field name="code">14301</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14300"/>
+            </record>
+            <record model="account.account.template" id="sm14302">
+		    <field name="name">Scartch Card Sales - Regions</field>
+		    <field name="code">14302</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14300"/>
+            </record>
+            <record model="account.account.template" id="sm14303">
+		    <field name="name">Sim Card Sales - Agents</field>
+		    <field name="code">14303</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14300"/>
+            </record>
+            <record model="account.account.template" id="sm14304">
+		    <field name="name">Easy Load Sales (Evoucher) - Regions</field>
+		    <field name="code">14304</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14300"/>
+            </record>
+            <record model="account.account.template" id="sm14305">
+		    <field name="name">Easy Load Sales (Evoucher) - Agents</field>
+		    <field name="code">14305</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14300"/>
+            </record>
+            <record model="account.account.template" id="sm14350">
+		    <field name="name">PREPAYMENT &amp; ADVANCES </field>
+		    <field name="code">14350</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm10000"/>
+            </record>
+            <record model="account.account.template" id="sm14351">
+		    <field name="name">Prepayment - Rents</field>
+		    <field name="code">14351</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14350"/>
+            </record>
+            <record model="account.account.template" id="sm14352">
+		    <field name="name">Prepayment others</field>
+		    <field name="code">14352</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14350"/>
+            </record>
+            <record model="account.account.template" id="sm14353">
+		    <field name="name">Prepayments Deposits</field>
+		    <field name="code">14353</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14350"/>
+            </record>
+            <record model="account.account.template" id="sm14354">
+		    <field name="name">Loan Advances  Staff</field>
+		    <field name="code">14354</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14350"/>
+            </record>
+            <record model="account.account.template" id="sm14355">
+		    <field name="name">Loans Others</field>
+		    <field name="code">14355</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14350"/>
+            </record>
+            <record model="account.account.template" id="sm14400">
+		    <field name="name">CURRENT ACCOUNTS</field>
+		    <field name="code">14400</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm10000"/>
+            </record>
+            <record model="account.account.template" id="sm14401">
+		    <field name="name">Somtel Inter-Company "A" Transactions</field>
+		    <field name="code">14401</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14400"/>
+            </record>
+            <record model="account.account.template" id="sm14402">
+		    <field name="name">Somtel Inter-Company "B" Transactions</field>
+		    <field name="code">14402</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14400"/>
+            </record>
+            <record model="account.account.template" id="sm14403">
+		    <field name="name">Somtel Inter-Company "C" Transactions</field>
+		    <field name="code">14403</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14400"/>
+            </record>
+            <record model="account.account.template" id="sm14404">
+		    <field name="name">Shareholders withdrawals</field>
+		    <field name="code">14404</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14400"/>
+            </record>
+            <record model="account.account.template" id="sm14405">
+		    <field name="name">Board Directors Withdrawals</field>
+		    <field name="code">14405</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm14400"/>
+            </record>
+            <record model="account.account.template" id="sm12100">
+		    <field name="name">Fixed Assets at Cost</field>
+		    <field name="code">12100</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm1"/>
+            </record>
+            <record model="account.account.template" id="sm12101">
+		    <field name="name">Buildings</field>
+		    <field name="code">12101</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm12100"/>
+            </record>
+            <record model="account.account.template" id="sm12102">
+		    <field name="name">Land</field>
+		    <field name="code">12102</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm12100"/>
+            </record>
+            <record model="account.account.template" id="sm12103">
+		    <field name="name">Telphone Equipment</field>
+		    <field name="code">12103</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm12100"/>
+            </record>
+            <record model="account.account.template" id="sm12104">
+		    <field name="name">Plant and Machinery</field>
+		    <field name="code">12104</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm12100"/>
+            </record>
+            <record model="account.account.template" id="sm12105">
+		    <field name="name">Furniture and Fixtures</field>
+		    <field name="code">12105</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm12100"/>
+            </record>
+            <record model="account.account.template" id="sm12106">
+		    <field name="name">Computers and Equipment</field>
+		    <field name="code">12106</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm12100"/>
+            </record>
+            <record model="account.account.template" id="sm12107">
+		    <field name="name">Motor Vehicles</field>
+		    <field name="code">12107</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm12100"/>
+            </record>
+            <record model="account.account.template" id="sm12108">
+		    <field name="name">Solar Equipment</field>
+		    <field name="code">12108</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm12100"/>
+            </record>
+            <record model="account.account.template" id="sm12109">
+		    <field name="name">Towers, Tools, Radios </field>
+		    <field name="code">12109</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_asset"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm12100"/>
+            </record>
+            <record model="account.account.template" id="sm21000">
+		    <field name="name">Liabilities</field>
+		    <field name="code">21000</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.account_type_liability_view1"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm1"/>
+            </record>
+            <record model="account.account.template" id="sm21200">
+		    <field name="name">Currents Liabilities</field>
+		    <field name="code">21200</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21000"/>
+            </record>
+            <record model="account.account.template" id="sm21201">
+		    <field name="name">Accounts Payable</field>
+		    <field name="code">21201</field>
+		    <field name="type">payable</field>
+		    <field name="user_type" ref="account.data_account_type_payable"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21200"/>
+            </record>
+            <record model="account.account.template" id="sm21202">
+		    <field name="name">Trade Creditors Control Acct</field>
+		    <field name="code">21202</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21200"/>
+            </record>
+            <record model="account.account.template" id="sm21203">
+		    <field name="name">Salaries  &amp; Wages Payables </field>
+		    <field name="code">21203</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21200"/>
+            </record>
+            <record model="account.account.template" id="sm21204">
+		    <field name="name">Provision for End-of-Services-Benefits</field>
+		    <field name="code">21204</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21200"/>
+            </record>
+            <record model="account.account.template" id="sm21205">
+		    <field name="name">Provision for bad debts</field>
+		    <field name="code">21205</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21200"/>
+            </record>
+            <record model="account.account.template" id="sm21206">
+		    <field name="name">Bank Loans (short term)</field>
+		    <field name="code">21206</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21200"/>
+            </record>
+            <record model="account.account.template" id="sm21207">
+		    <field name="name">Taxation</field>
+		    <field name="code">21207</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21200"/>
+            </record>
+            <record model="account.account.template" id="sm21208">
+		    <field name="name">Utilities</field>
+		    <field name="code">21208</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21200"/>
+            </record>
+            <record model="account.account.template" id="sm21209">
+		    <field name="name">Customer prepayments/Deposits</field>
+		    <field name="code">21209</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21200"/>
+            </record>
+            <record model="account.account.template" id="sm21210">
+		    <field name="name">Current portion of long term debts</field>
+		    <field name="code">21210</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21200"/>
+            </record>
+            <record model="account.account.template" id="sm21211">
+		    <field name="name">Dividends Payable</field>
+		    <field name="code">21211</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21200"/>
+            </record>
+            <record model="account.account.template" id="sm21212">
+		    <field name="name">Minority Interests</field>
+		    <field name="code">21212</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21200"/>
+            </record>
+            <record model="account.account.template" id="sm21300">
+		    <field name="name">Long Term Liabilities</field>
+		    <field name="code">21300</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21000"/>
+            </record>
+            <record model="account.account.template" id="sm21301">
+		    <field name="name">Satellite Creditors</field>
+		    <field name="code">21301</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21300"/>
+            </record>
+            <record model="account.account.template" id="sm21302">
+		    <field name="name">Telecom Creditors</field>
+		    <field name="code">21302</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21300"/>
+            </record>
+            <record model="account.account.template" id="sm21303">
+		    <field name="name">Other Creditors</field>
+		    <field name="code">21303</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21300"/>
+            </record>
+            <record model="account.account.template" id="sm20304">
+		    <field name="name">Long Term Creditors</field>
+		    <field name="code">20304</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21300"/>
+            </record>
+            <record model="account.account.template" id="sm21400">
+		    <field name="name">Loans payable</field>
+		    <field name="code">21400</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21000"/>
+            </record>
+            <record model="account.account.template" id="sm20401">
+		    <field name="name">Bank Loans</field>
+		    <field name="code">20401</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm21400"/>
+            </record>
+            <record model="account.account.template" id="sm31300">
+		    <field name="name">Equity</field>
+		    <field name="code">31300</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm1"/>
+            </record>
+            <record model="account.account.template" id="sm31301">
+		    <field name="name">Shareholders Equity</field>
+		    <field name="code">31301</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_liability"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm31300"/>
+            </record>
+            <record model="account.account.template" id="sm40000">
+		    <field name="name">Revenue Income</field>
+		    <field name="code">40000</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_view"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm2"/>
+            </record>
+            <record model="account.account.template" id="sm41000">
+		    <field name="name">Product Sales</field>
+		    <field name="code">41000</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_income"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm40000"/>
+            </record>
+            <record model="account.account.template" id="sm41001">
+		    <field name="name">Sales -  Sim-Cards</field>
+		    <field name="code">41001</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_income"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm41000"/>
+            </record>
+            <record model="account.account.template" id="sm41002">
+		    <field name="name">Sales - Scartch Cards</field>
+		    <field name="code">41002</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_income"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm41000"/>
+            </record>
+            <record model="account.account.template" id="sm41003">
+		    <field name="name">Sales - Incoming Calls (Overseas) </field>
+		    <field name="code">41003</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_income"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm41000"/>
+            </record>
+            <record model="account.account.template" id="sm41004">
+		    <field name="name">Sales - Out-going Calls (Overseas) </field>
+		    <field name="code">41004</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_income"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm41000"/>
+            </record>
+            <record model="account.account.template" id="sm41005">
+		    <field name="name">Sales- Local Calls postpaid</field>
+		    <field name="code">41005</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_income"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm41000"/>
+            </record>
+            <record model="account.account.template" id="sm41006">
+		    <field name="name">Sales- Local Calls prepaid</field>
+		    <field name="code">41006</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_income"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm41000"/>
+            </record>
+            <record model="account.account.template" id="sm41007">
+		    <field name="name">Sales - E-Voucher Service (easy Load)</field>
+		    <field name="code">41007</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_income"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm41000"/>
+            </record>
+            <record model="account.account.template" id="sm41008">
+		    <field name="name">Sales - Interconnections calls Somtel Bosaso</field>
+		    <field name="code">41008</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_income"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm41000"/>
+            </record>
+            <record model="account.account.template" id="sm41009">
+		    <field name="name">Sales -  Inter-connections calls Somtel Moq</field>
+		    <field name="code">41009</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_income"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm41000"/>
+            </record>
+            <record model="account.account.template" id="sm41010">
+		    <field name="name">Sales -Interconnections calls others</field>
+		    <field name="code">41010</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_income"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm41000"/>
+            </record>
+            <record model="account.account.template" id="sm41011">
+		    <field name="name">Sales - Fixed Line rental Income</field>
+		    <field name="code">41011</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_income"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm41000"/>
+            </record>
+            <record model="account.account.template" id="sm41012">
+		    <field name="name">Sales - Internet sales revenue</field>
+		    <field name="code">41012</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_income"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm41000"/>
+            </record>
+            <record model="account.account.template" id="sm41013">
+		    <field name="name">Sales - Installation fees Internet</field>
+		    <field name="code">41013</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_income"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm41000"/>
+            </record>
+            <record model="account.account.template" id="sm41014">
+		    <field name="name">Sales - GPRS </field>
+		    <field name="code">41014</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_income"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm41000"/>
+            </record>
+            <record model="account.account.template" id="sm41015">
+		    <field name="name">Sales - Fixed Line rental Income</field>
+		    <field name="code">41015</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_income"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm41000"/>
+            </record>
+            <record model="account.account.template" id="sm41016">
+		    <field name="name">Sales - Installation fees others</field>
+		    <field name="code">41016</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_income"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm41000"/>
+            </record>
+            <record model="account.account.template" id="sm50000">
+		    <field name="name">Cost of Sales</field>
+		    <field name="code">50000</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm40000"/>
+            </record>
+            <record model="account.account.template" id="sm50001">
+		    <field name="name">Cost of Simcards </field>
+		    <field name="code">50001</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm50000"/>
+            </record>
+            <record model="account.account.template" id="sm50002">
+		    <field name="name">Cost of Scartch cards</field>
+		    <field name="code">50002</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm50000"/>
+            </record>
+            <record model="account.account.template" id="sm50003">
+		    <field name="name">Traffic Inter-connect charges</field>
+		    <field name="code">50003</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm50000"/>
+            </record>
+            <record model="account.account.template" id="sm50004">
+		    <field name="name">DID Charges</field>
+		    <field name="code">50004</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm50000"/>
+            </record>
+            <record model="account.account.template" id="sm50005">
+		    <field name="name">Satellite &amp; Roaming charges</field>
+		    <field name="code">50005</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm50000"/>
+            </record>
+            <record model="account.account.template" id="sm50006">
+		    <field name="name">Internet Band width charges</field>
+		    <field name="code">50006</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm50000"/>
+            </record>
+            <record model="account.account.template" id="sm50007">
+		    <field name="name">Installations charges</field>
+		    <field name="code">50007</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm50000"/>
+            </record>
+            <record model="account.account.template" id="sm50008">
+		    <field name="name">Internet bills discount</field>
+		    <field name="code">50008</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm50000"/>
+            </record>
+            <record model="account.account.template" id="sm50009">
+		    <field name="name">Postpaid billing discount</field>
+		    <field name="code">50009</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm50000"/>
+            </record>
+            <record model="account.account.template" id="sm50010">
+		    <field name="name">Sales Agency discount</field>
+		    <field name="code">50010</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm50000"/>
+            </record>
+            <record model="account.account.template" id="sm50011">
+		    <field name="name">Cash Sales discount</field>
+		    <field name="code">50011</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm50000"/>
+            </record>
+            <record model="account.account.template" id="sm50012">
+		    <field name="name">Collection Commission</field>
+		    <field name="code">50012</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm50000"/>
+            </record>
+            <record model="account.account.template" id="sm50013">
+		    <field name="name">Easy load discount</field>
+		    <field name="code">50013</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm50000"/>
+            </record>
+            <record model="account.account.template" id="sm50014">
+		    <field name="name">Voip Bills discount</field>
+		    <field name="code">50014</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm50000"/>
+            </record>
+            <record model="account.account.template" id="sm50015">
+		    <field name="name">Sales promotion discount</field>
+		    <field name="code">50015</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm50000"/>
+            </record>
+            <record model="account.account.template" id="sm50016">
+		    <field name="name">GPRS Service discount</field>
+		    <field name="code">50016</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm50000"/>
+            </record>
+            <record model="account.account.template" id="sm60000">
+		    <field name="name">Overheads</field>
+		    <field name="code">60000</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm40000"/>
+            </record>
+            <record model="account.account.template" id="sm60100">
+		    <field name="name">Personnel Costs</field>
+		    <field name="code">60100</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60000"/>
+            </record>
+            <record model="account.account.template" id="sm60101">
+		    <field name="name">Staff  Salaries - Payroll</field>
+		    <field name="code">60101</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60100"/>
+            </record>
+            <record model="account.account.template" id="sm60102">
+		    <field name="name">Staff Allowance - Payroll</field>
+		    <field name="code">60102</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60100"/>
+            </record>
+            <record model="account.account.template" id="sm60103">
+		    <field name="name">Wages - Daily paid</field>
+		    <field name="code">60103</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60100"/>
+            </record>
+            <record model="account.account.template" id="sm60104">
+		    <field name="name">Staff Bonus/incentives</field>
+		    <field name="code">60104</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60100"/>
+            </record>
+            <record model="account.account.template" id="sm60105">
+		    <field name="name">Staff Training cost</field>
+		    <field name="code">60105</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60100"/>
+            </record>
+            <record model="account.account.template" id="sm60106">
+		    <field name="name">Staff Duty Trips Allowance</field>
+		    <field name="code">60106</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60100"/>
+            </record>
+            <record model="account.account.template" id="sm60107">
+		    <field name="name">Staff Trip Accomodation</field>
+		    <field name="code">60107</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60100"/>
+            </record>
+            <record model="account.account.template" id="sm60108">
+		    <field name="name">Staff Medical charges</field>
+		    <field name="code">60108</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60100"/>
+            </record>
+            <record model="account.account.template" id="sm60109">
+		    <field name="name">Staff Travel overseas</field>
+		    <field name="code">60109</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60100"/>
+            </record>
+            <record model="account.account.template" id="sm60110">
+		    <field name="name">Staff Overtime</field>
+		    <field name="code">60110</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60100"/>
+            </record>
+            <record model="account.account.template" id="sm60111">
+		    <field name="name">Staff Bonus/incentives</field>
+		    <field name="code">60111</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60100"/>
+            </record>
+            <record model="account.account.template" id="sm60112">
+		    <field name="name">Staff welfare</field>
+		    <field name="code">60112</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60100"/>
+            </record>
+            <record model="account.account.template" id="sm60113">
+		    <field name="name">Staff End of Service Benefits</field>
+		    <field name="code">60113</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60100"/>
+            </record>
+            <record model="account.account.template" id="sm60114">
+		    <field name="name">Income tax Company Contribution</field>
+		    <field name="code">60114</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60100"/>
+            </record>
+            <record model="account.account.template" id="sm60115">
+		    <field name="name">Contracts - Temporary services</field>
+		    <field name="code">60115</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60100"/>
+            </record>
+            <record model="account.account.template" id="sm60116">
+		    <field name="name">Security Guards</field>
+		    <field name="code">60116</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60100"/>
+            </record>
+            <record model="account.account.template" id="sm61000">
+		    <field name="name">Repairs &amp; Maintainance</field>
+		    <field name="code">61000</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60000"/>
+            </record>
+            <record model="account.account.template" id="sm61001">
+		    <field name="name">Repairs &amp; Maintenance - Generators</field>
+		    <field name="code">61001</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm61000"/>
+            </record>
+            <record model="account.account.template" id="sm61002">
+		    <field name="name">Repair &amp; Maintenace -Telecom Equip</field>
+		    <field name="code">61002</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm61000"/>
+            </record>
+            <record model="account.account.template" id="sm61003">
+		    <field name="name">Repair &amp; Maintenace -Vechiles</field>
+		    <field name="code">61003</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm61000"/>
+            </record>
+            <record model="account.account.template" id="sm61004">
+		    <field name="name">Repair &amp; Maintenace -Buildings</field>
+		    <field name="code">61004</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm61000"/>
+            </record>
+            <record model="account.account.template" id="sm61005">
+		    <field name="name">Repair &amp; Maintenace -other Equipment</field>
+		    <field name="code">61005</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm61000"/>
+            </record>
+            <record model="account.account.template" id="sm61006">
+		    <field name="name">Repair &amp; Maintenace - Others</field>
+		    <field name="code">61006</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm61000"/>
+            </record>
+            <record model="account.account.template" id="sm63100">
+		    <field name="name">Material Costs</field>
+		    <field name="code">63100</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60000"/>
+            </record>
+            <record model="account.account.template" id="sm63101">
+		    <field name="name">Purchases - Direct Materials </field>
+		    <field name="code">63101</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm63100"/>
+            </record>
+            <record model="account.account.template" id="sm63102">
+		    <field name="name">Stores Issues - Consumables Materials</field>
+		    <field name="code">63102</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm63100"/>
+            </record>
+            <record model="account.account.template" id="sm63103">
+		    <field name="name">Warehouse Issues - Spares (Machines)</field>
+		    <field name="code">63103</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm63100"/>
+            </record>
+            <record model="account.account.template" id="sm63104">
+		    <field name="name">Warehouse Issues - Spares (Gen.Sets)</field>
+		    <field name="code">63104</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm63100"/>
+            </record>
+            <record model="account.account.template" id="sm63105">
+		    <field name="name">Stores  Issues - Spare Parts</field>
+		    <field name="code">63105</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm63100"/>
+            </record>
+            <record model="account.account.template" id="sm63106">
+		    <field name="name">Fuel &amp; Lubr. ( Generators)</field>
+		    <field name="code">63106</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm63100"/>
+            </record>
+            <record model="account.account.template" id="sm63107">
+		    <field name="name">Fuel &amp; Lubr. (Vehicles)</field>
+		    <field name="code">63107</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm63100"/>
+            </record>
+            <record model="account.account.template" id="sm63108">
+		    <field name="name">Spare Parts (Vehicles)</field>
+		    <field name="code">63108</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm63100"/>
+            </record>
+            <record model="account.account.template" id="sm63109">
+		    <field name="name">Fuel &amp; Lubr. Motor Bikes</field>
+		    <field name="code">63109</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm63100"/>
+            </record>
+            <record model="account.account.template" id="sm64100">
+		    <field name="name">Marketing &amp; Promotions</field>
+		    <field name="code">64100</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60000"/>
+            </record>
+            <record model="account.account.template" id="sm64101">
+		    <field name="name">Marketing cost</field>
+		    <field name="code">64101</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64100"/>
+            </record>
+            <record model="account.account.template" id="sm64102">
+		    <field name="name">Advertisement cost</field>
+		    <field name="code">64102</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64100"/>
+            </record>
+            <record model="account.account.template" id="sm64103">
+		    <field name="name">Product Promotions cost</field>
+		    <field name="code">64103</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64100"/>
+            </record>
+            <record model="account.account.template" id="sm64104">
+		    <field name="name">Promotions others</field>
+		    <field name="code">64104</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64100"/>
+            </record>
+            <record model="account.account.template" id="sm64105">
+		    <field name="name">Public relations cost</field>
+		    <field name="code">64105</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64100"/>
+            </record>
+            <record model="account.account.template" id="sm64106">
+		    <field name="name">Charity and Donations</field>
+		    <field name="code">64106</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64100"/>
+            </record>
+            <record model="account.account.template" id="sm64107">
+		    <field name="name">Marketing commissions</field>
+		    <field name="code">64107</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64100"/>
+            </record>
+            <record model="account.account.template" id="sm64150">
+		    <field name="name">General Expenses</field>
+		    <field name="code">64150</field>
+		    <field name="type">view</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm60000"/>
+            </record>
+            <record model="account.account.template" id="sm64151">
+		    <field name="name">Office Rents expenses</field>
+		    <field name="code">64151</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64152">
+		    <field name="name">Computer &amp; internet costs</field>
+		    <field name="code">64152</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64153">
+		    <field name="name">Transportation charges</field>
+		    <field name="code">64153</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64154">
+		    <field name="name">Consultancy Fees</field>
+		    <field name="code">64154</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64155">
+		    <field name="name">Contract &amp; Support Services</field>
+		    <field name="code">64155</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64156">
+		    <field name="name">Utility charges (water &amp; Elect)</field>
+		    <field name="code">64156</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64157">
+		    <field name="name">Audit Fees</field>
+		    <field name="code">64157</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64158">
+		    <field name="name">Government fees Airtime</field>
+		    <field name="code">64158</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64159">
+		    <field name="name">Trade Licences fees</field>
+		    <field name="code">64159</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64160">
+		    <field name="name">Membership Fees</field>
+		    <field name="code">64160</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64161">
+		    <field name="name">Freight &amp; Handling charges</field>
+		    <field name="code">64161</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64162">
+		    <field name="name">Customs Duty</field>
+		    <field name="code">64162</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64163">
+		    <field name="name">Bad debts &amp; write-offs</field>
+		    <field name="code">64163</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64164">
+		    <field name="name">Board meetings &amp; expenses</field>
+		    <field name="code">64164</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64165">
+		    <field name="name">Office Rents expenses</field>
+		    <field name="code">64165</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64166">
+		    <field name="name">Other Rents &amp; Expenses</field>
+		    <field name="code">64166</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64167">
+		    <field name="name">Postal &amp; Telephone charges</field>
+		    <field name="code">64167</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64168">
+		    <field name="name">Recruitment charges</field>
+		    <field name="code">64168</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64169">
+		    <field name="name">Legal Fees</field>
+		    <field name="code">64169</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64170">
+		    <field name="name">Stationery &amp; Office Expenses</field>
+		    <field name="code">64170</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64171">
+		    <field name="name">Office Supplies &amp; Printing</field>
+		    <field name="code">64171</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64172">
+		    <field name="name">Office Journals &amp; Magazines</field>
+		    <field name="code">64172</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64173">
+		    <field name="name">Technical Supplies</field>
+		    <field name="code">64173</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64174">
+		    <field name="name">Miscellanous expenses</field>
+		    <field name="code">64174</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64175">
+		    <field name="name">Bank charges</field>
+		    <field name="code">64175</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64176">
+		    <field name="name">Depreciation charges</field>
+		    <field name="code">64176</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64177">
+		    <field name="name">Loss/(Gain) on Disposal of Assets</field>
+		    <field name="code">64177</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            <record model="account.account.template" id="sm64178">
+		    <field name="name">Income tax</field>
+		    <field name="code">64178</field>
+		    <field name="type">other</field>
+		    <field name="user_type" ref="account.data_account_type_expense"/>
+		    <field name="reconcile" eval="False"/>
+		    <field name="parent_id" ref="sm64150"/>
+            </record>
+            
+            <record id="somtel_chart_template" model="account.chart.template">
+            <field name="name">Somtel Chart of Accounts</field>
+            <field name="account_root_id" ref="sm0"/>
+            <field name="bank_account_view_id" ref="sm10300"/>
+            <field name="property_account_receivable" ref="sm14201"/>
+            <field name="property_account_payable" ref="sm21201"/>
+            <field name="property_account_expense_categ" ref="sm50001"/>
+            <field name="property_account_income_categ" ref="sm41001"/>
+            <field name="currency_id" ref="base.USD"/>
+        	</record>
+</data>
+</openerp>

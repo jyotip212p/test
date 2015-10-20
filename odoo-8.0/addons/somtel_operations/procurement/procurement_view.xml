@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		
+		<record id="view_procurement_form_somtel_inherit" model="ir.ui.view">
+            <field name="name">procurement.order.form.somtel.inherit</field>
+            <field name="model">procurement.order</field>
+            <field name="inherit_id" ref="procurement.procurement_form_view"/>
+            <field name="arch" type="xml">
+            	<button name="run" position="replace">
+            		<button name="action_submit" type="object" string="Submit Request" states="draft" groups="base.group_user"/>
+            		<button name="action_confirm" type="object" string="Confirm" states="waiting" groups="base.group_hr_user"/>
+            		<button name="run" states="confirmed,exception" string="Run Procurement" class="oe_highlight" type="object" groups="purchase.group_purchase_manager,purchase.group_purchase_user"/>
+            	</button>
+            	<button name="reset_to_confirmed" position="replace"/>
+            	<field name="product_id" position="before">
+            		<field name="employee_id" required="1" on_change="onchange_employee(employee_id)"/>
+            		<field name="department_id" required="1" readonly="1"/>
+            	</field>
+            	<div name="button_box" position="replace">
+            		<div class="oe_right oe_button_box" name="button_box" groups="purchase.group_purchase_manager,purchase.group_purchase_user">
+                        <button name="do_view_procurements" string="Group's Procurements" type="object"/>
+                    </div>
+            	</div>
+            </field>
+        </record>
+        
+        <record id="view_procurement_form_somtel_inherit2" model="ir.ui.view">
+            <field name="name">procurement.order.form.somtel.inherit2</field>
+            <field name="model">procurement.order</field>
+            <field name="inherit_id" ref="stock.view_procurement_form_stock_inherit"/>
+            <field name="arch" type="xml">
+            	<field name="warehouse_id" position="replace">
+            		<field name="warehouse_id" on_change="change_warehouse_id(warehouse_id, context)" groups="purchase.group_purchase_manager,purchase.group_purchase_user"/>
+            	</field>
+            	<field name="location_id" position="replace">
+            		<field name="location_id" domain="[('usage', '=', 'internal')]" groups="purchase.group_purchase_manager,purchase.group_purchase_user"/>
+            	</field>
+            	<field name="route_ids" position="replace">
+            		<field name="route_ids" widget="many2many_tags" groups="purchase.group_purchase_manager,purchase.group_purchase_user"/>
+            	</field>
+            </field>
+        </record>
+
+	</data>
+</openerp>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    <record id="view_skill_tree" model="ir.ui.view">
+            <field name="name">skill.tree</field>
+            <field name="model">hr.skill</field>
+            <field name="arch" type="xml">
+                <tree string="Skills" version="7.0">
+    					<field name="name"></field>
+    					<field name="description"></field>
+    			 </tree>
+    		</field>
+    </record>
+     
+     <record id="view_skill_form" model="ir.ui.view">
+            <field name="name">skill.form</field>
+            <field name="model">hr.skill</field>
+            <field name="arch" type="xml">
+              <form string="Skills" version="7.0">
+            	<field name="name"/>
+            	<field name="description" />
+              </form>
+    		</field>
+    </record>
+    
+    
+    <record id="actn_hr_skill1" model="ir.actions.act_window">
+            <field name="name">Skills</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.skill</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+        </record>
+        
+        
+     <menuitem name="Skills" id="menu_skill" parent="emp_training"  action="actn_hr_skill1" sequence="2"/>
+     
+	</data>
+</openerp>

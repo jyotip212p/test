@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data noupdate="0">
+        
+<!--   remind to Submit the Sales Forecast  -->
+	<record id="email_template_remind_sales_forecast_outlet" model="email.template">
+            <field name="name">Remind Outlets to Submit Sales Forecast</field>
+            <field name="email_from">${user.email or ''}</field>
+            <field name="subject">Submit Sales Forecast of ${object.name.name or 'n/a' } for the Period ${datetime.datetime.strptime(object.forecast_id.from_date, '%Y-%m-%d').strftime('%d/%m/%Y') or 'n/a' } - ${datetime.datetime.strptime(object.forecast_id.to_date, '%Y-%m-%d').strftime('%d/%m/%Y') or 'n/a' }</field>
+            <field name="email_to">${object.name.manager_id.partner_id.email}</field>
+            <field name="model_id" ref="somtel_operations.model_remind_outlet_forecast_submit"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; ">
+    <p>Hello ${object.name.manager_id.partner_id.name or ''},</p>
+    
+    <p>Please Submit the Sales Forecast of "${object.name.name or '' }" Outlet for the Period "${datetime.datetime.strptime(object.forecast_id.from_date, '%Y-%m-%d').strftime('%d/%m/%Y') or 'n/a' } - ${datetime.datetime.strptime(object.forecast_id.to_date, '%Y-%m-%d').strftime('%d/%m/%Y') or 'n/a' }".</p>
+</div>
+            ]]></field>
+        </record>
+        
+	</data>
+</openerp>

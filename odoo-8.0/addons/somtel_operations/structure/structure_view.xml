@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		
+		<record id='view_sector_tree' model='ir.ui.view'>
+			<field name='name'>view.sector.tree</field>
+			<field name='model'>sale.sector</field>
+			<field name='arch' type='xml'>
+				<tree string="Sectors">
+					<field name='name'/>
+					<field name='code'/>
+					<field name='company_id'/>
+					<field name='manager_id'/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id='view_sector_form' model='ir.ui.view'>
+			<field name='name'>view.sector.form</field>
+			<field name='model'>sale.sector</field>
+			<field name='arch' type='xml'>
+				<form string="Sectors">
+					<sheet>
+                        <div class="oe_right oe_button_box">                        
+                            <button name="view_all_locations" 
+                                    string="Current Stock"
+                                    icon="fa-building-o"
+                                    class="oe_stat_button" 
+                                    type="object"/> 
+                        </div>						
+						<group col="4" colspan="2">
+							<field name='name'/>
+							<field name='code'/>
+							<field name='manager_id' domain="[('company_id','=',company_id)]" options="{'no_open':True,'no_create':True}"/>
+							<field name='company_id' options="{'no_open':True,'no_create':True}"/>
+							<field name='warehouse_id' domain="[('company_id','=',company_id)]" options="{'no_open':True,'no_create':True}"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<record id='action_sector' model='ir.actions.act_window'>
+			<field name='name'>Sectors</field>
+			<field name='res_model'>sale.sector</field>
+			<field name='view_type'>form</field>
+			<field name='view_mode'>tree,form</field>
+		</record>
+		
+		<menuitem id='menu_sector' action='action_sector' parent='base.menu_base_config' sequence='50'/>
+		
+
+			
+		<record id='view_shop_tree' model='ir.ui.view'>
+			<field name='name'>view.shop.tree</field>
+			<field name='model'>sale.shop</field>
+			<field name='arch' type='xml'>
+				<tree string="shops">
+					<field name='name'/>
+					<field name='code'/>
+					<field name='sector_id'/>
+					<field name='manager_id'/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id='view_shop_form' model='ir.ui.view'>
+			<field name='name'>view.shop.form</field>
+			<field name='model'>sale.shop</field>
+			<field name='arch' type='xml'>
+				<form string="shops">
+					<sheet>
+                        <div class="oe_right oe_button_box">                        
+                            <button name="view_all_locations" 
+                                    string="Current Stock"
+                                    icon="fa-building-o"
+                                    class="oe_stat_button" 
+                                    type="object"/> 
+                        </div>				
+						<group col="4" colspan="2">
+							<field name='name'/>
+							<field name='code'/>
+							<field name='manager_id' domain="[('company_id','=',company_id)]" options="{'no_open':True,'no_create':True}"/>
+							<field name='sector_id' domain="[('company_id','=',company_id)]" options="{'no_open':True,'no_create':True}"/>
+							<field name='company_id' options="{'no_open':True,'no_create':True}"/>
+							<field name='warehouse_id' domain="[('company_id','=',company_id)]" options="{'no_open':True,'no_create':True}"/>
+							<field name='sector_shop' invisible='1'/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<record id='action_shop' model='ir.actions.act_window'>
+			<field name='name'>Shops</field>
+			<field name='res_model'>sale.shop</field>
+			<field name='view_type'>form</field>
+			<field name='view_mode'>tree,form</field>
+		</record>
+		
+		<menuitem id='menu_shop' action='action_shop' parent='base.menu_base_config' sequence='51'/>
+
+		<record id='view_branch_tree' model='ir.ui.view'>
+			<field name='name'>view.branch.tree</field>
+			<field name='model'>sale.branch</field>
+			<field name='arch' type='xml'>
+				<tree string="Branches">
+					<field name='name'/>
+					<field name='sector_id'/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id='view_branch_form' model='ir.ui.view'>
+			<field name='name'>view.branch.form</field>
+			<field name='model'>sale.branch</field>
+			<field name='arch' type='xml'>
+				<form string="Branches">
+					<sheet>
+						<group col="4" colspan="2">
+							<field name='name'/>
+							<field name='sector_id' options="{'no_open':True,'no_create':True}" domain="[('company_id','=',company_id)]"/>
+							<field name='company_id' required="1" options="{'no_open':True,'no_create':True}"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<record id='action_branch' model='ir.actions.act_window'>
+			<field name='name'>Branches</field>
+			<field name='res_model'>sale.branch</field>
+			<field name='view_type'>form</field>
+			<field name='view_mode'>tree,form</field>
+		</record>
+		
+		<menuitem id='menu_branch' action='action_branch' parent='base.menu_base_config' sequence='52'/>
+				
+	</data>
+</openerp>

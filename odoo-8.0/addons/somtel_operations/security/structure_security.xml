@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate="0">
+		
+		 <record model="ir.module.category" id="module_category_retail_sales">
+	         <field name="name">Retail Sales</field>
+	         <field name="description">Helps you to manage Retail sales.</field>
+	         <field name="sequence">2</field>
+	     </record>
+	        
+	    <record id="group_retail_sale_outlet" model="res.groups">
+	        <field name="name">Outlet Manager</field>
+	        <field name="category_id" ref="module_category_retail_sales"/>
+	        <field name="implied_ids" eval="[(4, ref('base.group_sale_salesman'))]"/>
+	        <field name="comment">This user can handle outlet sales.</field>
+	    </record>
+	    
+	    <record id="group_retail_sale_sector" model="res.groups">
+	        <field name="name">Sector Manager</field>
+	        <field name="comment">This use can handle the sectors and also the outlets under the sector.</field>
+	        <field name="category_id" ref="module_category_retail_sales"/>
+	        <field name="implied_ids" eval="[(4, ref('group_retail_sale_outlet'))]"/>
+	    </record>
+		
+	    <!-- Rules -->
+	    
+		<record id="outlet_manager_sale_rule" model="ir.rule">
+			<field name="name">Outlet Manager</field>
+	        <field ref="model_sale_shop" name="model_id"/>
+	        <field name="domain_force">[('manager_id','=',user.id)]</field>
+	        <field name="groups" eval="[(4, ref('group_retail_sale_outlet'))]"/>
+		</record>
+		
+		<record id="sector_manager_sale_rule" model="ir.rule">
+			<field name="name">Sector Manager</field>
+	        <field ref="model_sale_shop" name="model_id"/>
+	        <field name="domain_force">[('sector_id.manager_id','=',user.id)]</field>
+	        <field name="groups" eval="[(4, ref('group_retail_sale_sector'))]"/>
+		</record>
+		
+		<record id="outlet_manager_sale_manager_rule" model="ir.rule">
+			<field name="name">Sales Manager Outlet</field>
+	        <field ref="model_sale_shop" name="model_id"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+	        <field name="groups" eval="[(4, ref('base.group_sale_manager'))]"/>
+		</record>
+		
+		<record id="outlet_multi_company_rule" model="ir.rule">
+	        <field name="name">Shop Multi Company</field>
+	        <field ref="model_sale_shop" name="model_id"/>
+	         <field eval="True" name="global"/>
+	        <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+	    </record>
+		
+		<record id="sector_manager_sale_sector_rule" model="ir.rule">
+			<field name="name">Sector Manager Sectors</field>
+	        <field ref="model_sale_sector" name="model_id"/>
+	        <field name="domain_force">[('manager_id','=',user.id)]</field>
+	        <field name="groups" eval="[(4, ref('group_retail_sale_sector'))]"/>
+		</record>
+		
+		<record id="sector_manager_sale_manager_rule" model="ir.rule">
+			<field name="name">Sales Manager Sector</field>
+	        <field ref="model_sale_sector" name="model_id"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+	        <field name="groups" eval="[(4, ref('base.group_sale_manager'))]"/>
+		</record>
+		
+		<record id="sector_multi_company_rule" model="ir.rule">
+	        <field name="name">Sector Multi Company</field>
+	        <field ref="model_sale_sector" name="model_id"/>
+	         <field eval="True" name="global"/>
+	        <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+	    </record>
+		
+		<record id="asset_requisition_user_rule" model="ir.rule">
+			<field name="name">Asset Requisition User</field>
+	        <field ref="model_asset_requisition" name="model_id"/>
+	        <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+	        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+		</record>
+		
+		<record id="asset_requisition_manager_rule" model="ir.rule">
+			<field name="name">Asset Requisition Manager</field>
+	        <field ref="model_asset_requisition" name="model_id"/>
+	        <field name="domain_force">[('employee_id.parent_id.user_id','=',user.id)]</field>
+	        <field name="groups" eval="[(4, ref('base.group_hr_user'))]"/>
+		</record>
+		
+		<record id="asset_requisition_hr_manager_rule" model="ir.rule">
+			<field name="name">Asset Requisition HR Manager</field>
+	        <field ref="model_asset_requisition" name="model_id"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+	        <field name="groups" eval="[(4, ref('base.group_hr_manager'))]"/>
+		</record>
+		
+		<record id="asset_requisition_multi_company_rule" model="ir.rule">
+	        <field name="name">Asset Requisition Multi Company</field>
+	        <field ref="model_asset_requisition" name="model_id"/>
+	         <field eval="True" name="global"/>
+	        <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+	    </record>
+		
+		<record id="material_indentation_multi_company_rule" model="ir.rule">
+	        <field name="name">Indentation Multi Company</field>
+	        <field ref="model_material_indentation" name="model_id"/>
+	         <field eval="True" name="global"/>
+	        <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+	    </record>
+		
+		<record id="budget_line_hr_officer_rule" model="ir.rule">
+			<field name="name">Budget Lines HR Officer</field>
+	        <field ref="model_crossovered_budget_lines" name="model_id"/>
+	        <field name="domain_force">[('department_id.manager_id.user_id','=',user.id)]</field>
+	        <field name="groups" eval="[(4, ref('base.group_hr_user'))]"/>
+		</record>
+		
+		<record id="budget_line_hr_manager_rule" model="ir.rule">
+			<field name="name">Budget Lines HR Officer</field>
+	        <field ref="model_crossovered_budget_lines" name="model_id"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+	        <field name="groups" eval="[(4, ref('base.group_hr_user'))]"/>
+		</record>
+		
+		<record id="picking_view_rule_user" model="ir.rule">
+			<field name="name">Warehouse User</field>
+	        <field ref="stock.model_stock_picking" name="model_id"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+	        <field name="groups" eval="[(4, ref('stock.group_stock_user'))]"/>
+	        <field name="perm_read" eval="True"></field>
+	        <field name="perm_write" eval="True"></field>
+	        <field name="perm_create" eval="True"></field>
+	        <field name="perm_unlink" eval="True"></field>
+		</record>
+		
+		<record id="picking_view_rule_manager" model="ir.rule">
+			<field name="name">Warehouse Manager</field>
+	        <field ref="stock.model_stock_picking" name="model_id"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+	        <field name="groups" eval="[(4, ref('stock.group_stock_manager'))]"/>
+	        <field name="perm_read" eval="True"></field>
+	        <field name="perm_write" eval="True"></field>
+	        <field name="perm_create" eval="True"></field>
+	        <field name="perm_unlink" eval="True"></field>
+		</record>
+		
+		<record id="picking_type_view_rule_user" model="ir.rule">
+			<field name="name">Picking Type User</field>
+	        <field ref="stock.model_stock_picking_type" name="model_id"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+	        <field name="groups" eval="[(4, ref('stock.group_stock_user'))]"/>
+		</record>
+		
+		<record id="picking_type_view_rule_manager" model="ir.rule">
+			<field name="name">Picking Type Manager</field>
+	        <field ref="stock.model_stock_picking_type" name="model_id"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+	        <field name="groups" eval="[(4, ref('stock.group_stock_manager'))]"/>
+		</record>
+		
+		<record id="picking_view_rule_stock_user" model="ir.rule">
+			<field name="name">Picking User</field>
+	        <field ref="stock.model_stock_picking" name="model_id"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+	        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+	        <field name="perm_read" eval="True"></field>
+	        <field name="perm_write" eval="False"></field>
+	        <field name="perm_create" eval="False"></field>
+	        <field name="perm_unlink" eval="False"></field>
+		</record>
+		
+		<record id="stock_warehouse_rule_hr_user" model="ir.rule">
+			<field name="name">Warehouse HR User</field>
+	        <field ref="model_stock_warehouse" name="model_id"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+	        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+	        <field name="perm_read" eval="True"></field>
+	        <field name="perm_write" eval="False"></field>
+	        <field name="perm_create" eval="False"></field>
+	        <field name="perm_unlink" eval="False"></field>
+		</record>
+		
+		<record id="stock_warehouse_rule_user" model="ir.rule">
+			<field name="name">Warehouse User</field>
+	        <field ref="model_stock_warehouse" name="model_id"/>
+	        <field name="domain_force">[('user_id','=',user.id)]</field>
+	        <field name="groups" eval="[(4, ref('stock.group_stock_user'))]"/>
+	        <field name="perm_read" eval="True"></field>
+	        <field name="perm_write" eval="True"></field>
+	        <field name="perm_create" eval="False"></field>
+	        <field name="perm_unlink" eval="False"></field>
+		</record>
+		
+		<record id="stock_warehouse_rule_manager" model="ir.rule">
+			<field name="name">Warehouse MANAGER</field>
+	        <field ref="model_stock_warehouse" name="model_id"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+	        <field name="groups" eval="[(4, ref('stock.group_stock_manager'))]"/>
+	        <field name="perm_read" eval="True"></field>
+	        <field name="perm_write" eval="True"></field>
+	        <field name="perm_create" eval="True"></field>
+	        <field name="perm_unlink" eval="True"></field>
+		</record>
+
+  <!-- Sales Forecast Rules -->
+	    
+		<record id="outlet_manager_outlet_sales_forecast_rule" model="ir.rule">
+	        <field name="name">Outlet Manager Outlet Sales Forecast</field>
+	        <field ref="model_outlet_sales_forecast" name="model_id"/>
+	        <field name="domain_force">[('shop_id.manager_id','=',user.id)]</field>
+	        <field name="groups" eval="[(4, ref('group_retail_sale_outlet'))]"/>
+		</record>
+	    
+		<record id="sector_manager_outlet_sales_forecast_rule" model="ir.rule">
+	        <field name="name">Sector Manager Outlet Sales Forecast</field>
+	        <field ref="model_outlet_sales_forecast" name="model_id"/>
+	        <field name="domain_force">[('shop_id.sector_id.manager_id','=',user.id)]</field>
+	        <field name="groups" eval="[(4, ref('group_retail_sale_sector'))]"/>
+		</record>
+	    
+		<record id="sale_manager_outlet_sales_forecast_rule" model="ir.rule">
+	        <field name="name">Sale Manager Outlet Sales Forecast</field>
+	        <field ref="model_outlet_sales_forecast" name="model_id"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+	        <field name="groups" eval="[(4, ref('base.group_sale_manager'))]"/>
+		</record>		
+	    
+		<record id="sector_manager_sales_forecast_rule" model="ir.rule">
+	        <field name="name">Sector Manager Sales Forecast</field>
+	        <field ref="model_sales_forecast" name="model_id"/>
+	        <field name="domain_force">['|',('create_uid','=',user.id),('sector_id.manager_id','=',user.id)]</field>
+	        <field name="groups" eval="[(4, ref('group_retail_sale_sector'))]"/>
+		</record>
+	    
+		<record id="sale_manager_sales_forecast_rule" model="ir.rule">
+	        <field name="name">Sale Manager Sales Forecast</field>
+	        <field ref="model_sales_forecast" name="model_id"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+	        <field name="groups" eval="[(4, ref('base.group_sale_manager'))]"/>
+		</record>		
+		
+		<record id="product_category_multi_company_rule" model="ir.rule">
+	        <field name="name">Product Category Multi Company</field>
+	        <field ref="model_product_category" name="model_id"/>
+	         <field eval="True" name="global"/>
+	        <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+	    </record>
+		
+	</data>
+</openerp>
